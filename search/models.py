@@ -8,9 +8,10 @@ class Cnword(models.Model):
     words = models.CharField(max_length=255, blank=True)
     explain = models.TextField()
     py = models.CharField(max_length=255)
+    searchcount = models.IntegerField(default=0, verbose_name='查询次数')
 
     class Meta:
         db_table = 'cnword'
-
+        ordering = ('-searchcount',)  # 按照查询次数排序
     def __unicode__(self):
         return self.words
